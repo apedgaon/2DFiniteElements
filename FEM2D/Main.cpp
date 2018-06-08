@@ -96,9 +96,6 @@ int main(int argc, char* argv[])
 
 	NBC.ApplyNeum(elem, node, F, thickness);
 	
-	string sFileName2("F.dat");
-	printv(F, sFileName2);
-
 	// Loading and Applying Dirichlet Boundary Conditions
 	Dirichlet DBC;
 	int dira, dirb;
@@ -114,14 +111,17 @@ int main(int argc, char* argv[])
 	read_file.clear();
 	DBC.ApplyDirichlet(K, F, num_nodes);
 
-	//printv(F);
-	//printm(K, 2 * num_nodes);
-	
+	// Solving Linear Equation KU = F
 	vector<double> U(2 * num_nodes, 0);
 	CGSolver(K, U, F, 2 * num_nodes);
+
+	// Printing Solution Values U
 	string sFileName("U.dat");
 	printv(U, sFileName);
+
+	// Deleting Pointers
 	delete[] K_Local;
 	delete[] Qe;
+
 	return 0;
 }
