@@ -97,16 +97,6 @@ void ComputeLocalStiffnesMatrix(double* K_Local, const double* Qe, const double*
 
 void GlobalMatrixAllocator(double *K_Local, vector<double> &K, vector<int>& elem, const int& num_nodes, const int& i)
 {
-	/*int edgenode[8] = { 0,1,1,2,2,3,3,0 };
-	int jL, kL, jG, kG;
-	for (int j = 0; j < 4; j++)
-	{
-		jL = edgenode[2 * j - 1];
-		kL = edgenode[2 * j];
-		jG = elem[4 * i + jL];
-		kG = elem[4 * i + kL];
-		K[jG * num_nodes]
-	}*/
 	int jL, jG, kL, nodej, nodek;
 	for (int j = 0; j < 64; j++)
 	{
